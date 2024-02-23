@@ -26,9 +26,10 @@ def get_prompts(test_case_name):
 
 if __name__ == "__main__":
     sampling_params = SamplingParams(temperature=0.8, top_p=0.95, max_tokens=1024)
+    prompts = get_prompts("textx4")
 
-    #llm = LLM(model="/data/shared/llama-hf/llama-2-70b-hf", tensor_parallel_size=2) # need two A100-80Gß
-    llm = LLM(model="/data/shared/llama-hf/llama-2-7b-hf") # need 1 24G
+    #llm = LLM(model="/data/chengyu/model/llama-hf/llama-2-70b-hf", tensor_parallel_size=2) # need two A100-80Gß
+    llm = LLM(model="/data/chengyu/model/llama-hf/llama-2-7b-hf") # need 1 24G
     # llm = LLM(model="test_model_3x1") # need 1 24G
     start_time = time.time()
     outputs = llm.generate(prompts, sampling_params)
